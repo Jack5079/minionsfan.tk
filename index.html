@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>minion fan... epic</title>
+  </head>
+
+  <body>
+    <script>
+      const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+        (async () => {
+          while (true) {
+            const marg = document.createElement('marquee')
+            marg.scrollDelay = 60
+            await delay(100)
+            marg.scrollAmount = Math.random() * 100
+            marg.direction = Math.random() > 0.5 ? 'left' : 'right'
+            marg.innerText = 'minoin = aweso!!!'
+            document.body.append(marg)
+          }
+        })()
+    </script>
+    <audio src="https://c1.rbxcdn.com/188a521853d7f17a6c69b7089c445b42" loop autoplay></audio>
+  </body>
+
+</html>
