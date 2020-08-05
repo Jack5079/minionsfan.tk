@@ -18,26 +18,32 @@
         
       }
     </style>
+        <script defer>
+          const aud = new Audio('song.mp3')
+          aud.play()
+          aud.loop = true
+          aud.playbackRate = 0.25
+          const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+          const wait = new Promise(resolve =>
+            aud.addEventListener('canplay', resolve));
+          (async () => {
+            await wait
+            while (true) {
+              const marg = document.createElement('marquee')
+              marg.scrollDelay = 60
+              await delay(100)
+              marg.scrollAmount = Math.random() * 100
+              marg.direction = Math.random() > 0.5 ? 'left' : 'right'
+              marg.innerText = 'minoin = aweso!!!'
+              document.body.append(marg)
+              aud.playbackRate += 0.01
+            }
+          })()
+        </script>
     <link rel="shortcut icon" href="min.gif" type="image/gif">
   </head>
 
   <body>
-    <script>
-      const delay = ms => new Promise(resolve => setTimeout(resolve, ms));  
-        (async () => {
-          while (true) {
-            const marg = document.createElement('marquee')
-            marg.scrollDelay = 60
-            await delay(100)
-            marg.scrollAmount = Math.random() * 100
-            marg.direction = Math.random() > 0.5 ? 'left' : 'right'
-            marg.innerText = 'minoin = aweso!!!'
-            document.body.append(marg)
-            document.querySelector('audio').playbackRate += 0.01
-          }
-        })()
-    </script>
-    <audio src="song.mp3" loop autoplay></audio>
   </body>
 
 </html>
